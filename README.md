@@ -1,19 +1,23 @@
-# 🚀 Pulse CLI — Ton planificateur de tâches simple et efficace
+---
 
-Pulse est un outil **Node.js** léger et puissant qui te permet de programmer l’exécution automatique de commandes et scripts, sans prise de tête. Inspiré de `cron` mais 100% en JavaScript, Pulse te libère du temps en lançant tes tâches **en arrière-plan**, quand tu le souhaites.
+# 🚀 Pulse CLI — Planificateur de tâches cron simple en Node.js
+
+Pulse est un module Node.js qui te permet de planifier l’exécution automatique de commandes ou scripts avec une syntaxe intuitive, basée sur node-cron.
 
 ---
 
 ## ✨ Pourquoi Pulse ?
 
-* **Simple à utiliser** — ajoute ta tâche avec une ligne de commande
-* **Flexible** — définis la fréquence, le jour, le mois et l’heure précisemment
-* **Basé sur node-cron** — fiable et bien supporté
-* **Idéal pour apprendre Node.js & cron**
+* Simple à installer et à utiliser
+* Permet de planifier facilement tes tâches avec une syntaxe flexible
+* Parfait pour apprendre à manipuler cron en Node.js
+* Fonctionne via la commande `pls` en CLI, pour un usage rapide
 
 ---
 
-## 🔧 Installation rapide
+## 🔧 Installation & utilisation
+
+1. Clone ce dépôt et installe les dépendances :
 
 ```bash
 git clone <repo-url>
@@ -21,33 +25,39 @@ cd pulse
 npm install
 ```
 
-Lance Pulse depuis la racine du projet avec :
+2. Crée un lien global pour utiliser la commande `pls` :
 
 ```bash
-node index.js <commande>
+npm link
+```
+
+3. Teste la commande `pls` directement dans ton terminal :
+
+```bash
+pls add '<commande>' --every "<fréquence>" --at "<heure>"
 ```
 
 ---
 
-## ⚡ Ajouter une tâche en 2 minutes chrono
+## ⚡ Ajouter une tâche facilement
 
 ```bash
-node index.js add '<commande>' --every "<fréquence>" --at "<heure>"
+pls add '<commande>' --every "<fréquence>" --at "<heure>"
 ```
 
-### Exemples concrets :
+### Exemples
 
-* 💻 **Tous les lundis à 16h25**, ajoute ton PATH dans un fichier :
+* Exécuter une commande tous les lundis à 16h25 :
 
-  ```bash
-  node index.js add 'echo $PATH >> ~/pls_test.txt' --every monday --at 16:25
-  ```
+```bash
+pls add 'echo $PATH >> ~/pls_test.txt' --every monday --at 16:25
+```
 
-* 📦 **Le 15 janvier à 22h05**, lance un script de sauvegarde :
+* Lancer un script le 15 janvier à 22h05 :
 
-  ```bash
-  node index.js add './backup.sh' --every "15 January" --at 22:05
-  ```
+```bash
+pls add './backup.sh' --every "15 January" --at 22:05
+```
 
 ---
 
@@ -55,7 +65,7 @@ node index.js add '<commande>' --every "<fréquence>" --at "<heure>"
 
 | Option    | Alias | Description                            | Exemple                |
 | --------- | ----- | -------------------------------------- | ---------------------- |
-| `--every` | `-e`  | Fréquence d’exécution (jour/date)      | `monday`, `15 January` |
+| `--every` | `-e`  | Fréquence d’exécution (jour ou date)   | `monday`, `15 January` |
 | `--at`    | `-a`  | Heure d’exécution (format 24h)         | `16:25`                |
 | `--date`  | `-d`  | Date précise (alternative à `--every`) | `15 January`           |
 
@@ -63,44 +73,31 @@ node index.js add '<commande>' --every "<fréquence>" --at "<heure>"
 
 ## 📅 Support complet des fréquences
 
-* Jours de la semaine (`monday`, `tuesday`, ...)
-* Dates précises (`15 January`, `22 February`, ...)
-* Heures au format `HH:mm` (24h)
+* Jours de la semaine (`monday`, `tuesday`, …)
+* Dates précises (`15 January`, `22 February`, …)
+* Heure au format 24h (`HH:mm`)
 
 ---
 
-## ⚙️ Comment ça marche ?
+## ⚙️ Fonctionnement
 
-* Ta commande + fréquence → transformé en expression cron valide
-* Node-cron se charge d’exécuter la commande à l’heure prévue
-* Résultats affichés dans la console, simples et clairs
+* La commande et sa fréquence sont converties en expression cron valide
+* node-cron exécute la tâche automatiquement au bon moment
+* Les sorties et erreurs sont affichées dans la console
 
 ---
 
 ## 🚧 Limitations & sécurité
 
-* Prototype d’apprentissage, usage personnel recommandé
-* Pas de gestion avancée des erreurs ni des permissions
-* Attention aux commandes potentiellement risquées
+* Projet pour apprendre, usage personnel recommandé
+* Pas de gestion avancée des erreurs ni permissions
+* Attention aux commandes pouvant être risquées
 
 ---
 
-## 📝 Exemple complet
+## 📜 Licence
 
-```bash
-node index.js add 'echo "Hello World"' --every friday --at 09:30
-```
-
-**Exécute la commande tous les vendredis à 9h30.**
-
----
-
-## 🔜 Prochaines idées ?
-
-* Interface graphique pour visualiser les tâches
-* Stockage persistant des jobs (fichiers, DB)
-* Gestion des logs d’exécution
-* Amélioration sécurité & validation
+MIT — libre à toi de contribuer et personnaliser !
 
 ---
 
