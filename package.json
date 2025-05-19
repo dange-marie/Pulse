@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/dange-marie/Pulse/issues"
   },
-  "homepage": "https://github.com/dange-marie/Pulse#readme"
+  "homepage": "https://github.com/dange-marie/Pulse#readme",
+  "dependencies": {
+    "node-cron": "^4.0.5",
+    "yargs": "^17.7.2"
+  }
 }
