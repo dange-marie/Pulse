@@ -1,4 +1,5 @@
 import nodeCron from "node-cron";
+import { exec } from 'child_process'
 
 export const registerCron = (command, order) => {
     const cronOrder = order.join(' ')
@@ -6,6 +7,11 @@ export const registerCron = (command, order) => {
     if (!nodeCron.validate(cronOrder)) {
         console.error(`[❌ Invalid Cron] "${cronOrder}" is not valid.`)
         return
+    }
+    const banned = ['rm', 'shutdown', 'reboot', 'mkfs'];
+    if (banned.some(word => command.includes(word))) {
+        console.error('Command rejected: potentially dangerous.');
+        return;
     }
     nodeCron.schedule(cronOrder, () => {
         exec(command, (err, stdout, stderr) => {
