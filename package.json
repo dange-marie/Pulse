@@ -1,0 +1,23 @@
+{
+  "name": "pulse",
+  "version": "1.0.0",
+  "description": "Pulse is a powerful and intuitive command-line tool for managing and scheduling recurring tasks using Cron, designed to keep your system and workflows in sync — like a heartbeat.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "bin": {
+    "pls": "./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dange-marie/Pulse.git"
+  },
+  "author": "dange-marie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dange-marie/Pulse/issues"
+  },
+  "homepage": "https://github.com/dange-marie/Pulse#readme"
+}
